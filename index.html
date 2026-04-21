@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Get More Information | Pathway Ministries</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #C9A84C;
+      --gold-light: #E8C96A;
+      --cream: #FAF7F2;
+      --dark: #1A1A1A;
+      --mid: #3D3533;
+      --muted: #8A7F74;
+      --border: rgba(201,168,76,0.25);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--cream);
+      color: var(--dark);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 80% 10%, rgba(201,168,76,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 10% 90%, rgba(201,168,76,0.06) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .container {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 560px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .cross-mark {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
+      opacity: 0.85;
+    }
+
+    .cross-mark svg {
+      width: 36px;
+      height: 36px;
+    }
+
+    .header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 2.4rem;
+      letter-spacing: 0.02em;
+      color: var(--dark);
+      line-height: 1.1;
+      margin-bottom: 8px;
+    }
+
+    .header h1 span {
+      color: var(--gold);
+    }
+
+    .header p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 16px auto;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 40px 40px 36px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.06), 0 1px 0 rgba(201,168,76,0.15);
+    }
+
+    .field {
+      margin-bottom: 22px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 7px;
+      font-weight: 500;
+    }
+
+    label span {
+      color: var(--gold);
+      margin-left: 2px;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid #E0D9CF;
+      border-radius: 2px;
+      background: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.92rem;
+      font-weight: 300;
+      color: var(--dark);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      outline: none;
+      appearance: none;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: var(--gold);
+      box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
+      background: #fff;
+    }
+
+    select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238A7F74' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 38px;
+      cursor: pointer;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--gold);
+      color: #fff;
+      border: none;
+      border-radius: 2px;
+      font-family: 'Jost', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+      margin-top: 8px;
+    }
+
+    .submit-btn:hover { background: #B8963E; }
+    .submit-btn:active { transform: scale(0.99); }
+    .submit-btn:disabled { background: #C9B882; cursor: not-allowed; }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 0.78rem;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+
+    .footer-note a {
+      color: var(--gold);
+      text-decoration: none;
+    }
+
+    /* Success state */
+    .success-box {
+      display: none;
+      text-align: center;
+      padding: 48px 40px;
+    }
+
+    .success-box .check {
+      width: 56px;
+      height: 56px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+
+    .success-box h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: 1.8rem;
+      color: var(--dark);
+      margin-bottom: 8px;
+    }
+
+    .success-box p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* Error banner */
+    .error-banner {
+      display: none;
+      background: #FFF0F0;
+      border: 1px solid #F5C6C6;
+      border-radius: 2px;
+      padding: 10px 14px;
+      font-size: 0.82rem;
+      color: #C0392B;
+      margin-bottom: 18px;
+    }
+
+    @media (max-width: 500px) {
+      .card { padding: 28px 20px 24px; }
+      .row { grid-template-columns: 1fr; gap: 0; }
+      .header h1 { font-size: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="header">
+    <div class="cross-mark">
+      <svg viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="18" y1="4" x2="18" y2="32" stroke="#C9A84C" stroke-width="1.5"/>
+        <line x1="8" y1="13" x2="28" y2="13" stroke="#C9A84C" stroke-width="1.5"/>
+      </svg>
+    </div>
+    <h1>Pathway <span>Ministries</span></h1>
+    <div class="divider"></div>
+    <p>Get More Information</p>
+  </div>
+
+  <div class="card">
+    <div class="error-banner" id="errorBanner">Something went wrong. Please try again or contact us directly.</div>
+
+    <form id="infoForm">
+      <div class="row">
+        <div class="field">
+          <label>First Name <span>*</span></label>
+          <input type="text" name="firstName" required placeholder="Your first name" />
+        </div>
+        <div class="field">
+          <label>Last Name <span>*</span></label>
+          <input type="text" name="lastName" required placeholder="Your last name" />
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Email Address <span>*</span></label>
+        <input type="email" name="email" required placeholder="you@example.com" />
+      </div>
+
+      <div class="field">
+        <label>Phone Number</label>
+        <input type="tel" name="phone" placeholder="+27 " />
+      </div>
+
+      <div class="field">
+        <label>Area / Suburb</label>
+        <input type="text" name="suburb" placeholder="e.g. Sandton, Fourways..." />
+      </div>
+
+      <div class="field">
+        <label>What brought you to Pathway?</label>
+        <select name="referral">
+          <option value="" disabled selected>Select an option</option>
+          <option>Friend or Family</option>
+          <option>Social Media</option>
+          <option>Walked in / Drove past</option>
+          <option>An Event</option>
+          <option>Online Search</option>
+          <option>Other</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>Prayer Request or Message</label>
+        <textarea name="message" placeholder="Share anything you'd like us to pray for or know about you..."></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn" id="submitBtn">Submit &amp; Connect With Us</button>
+    </form>
+
+    <div class="success-box" id="successBox">
+      <div class="check">
+        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <path d="M5 11l4.5 4.5L17 7" stroke="#C9A84C" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h2>Thank you!</h2>
+      <p>We've received your details and someone from the Pathway Ministries team will be in touch with you soon.<br><br>God bless you. 🙏</p>
+    </div>
+  </div>
+
+  <div class="footer-note">
+    Pathway Ministries · Hyde Park, Johannesburg · <a href="https://pathwaym.co.za">pathwaym.co.za</a>
+  </div>
+</div>
+
+<script>
+  const form = document.getElementById('infoForm');
+  const btn = document.getElementById('submitBtn');
+  const successBox = document.getElementById('successBox');
+  const errorBanner = document.getElementById('errorBanner');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    btn.disabled = true;
+    btn.textContent = 'Sending...';
+    errorBanner.style.display = 'none';
+
+    const data = Object.fromEntries(new FormData(form));
+
+    try {
+      const res = await fetch('https://pathway-ministries-api.vercel.app/api/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+
+      if (res.ok) {
+        form.style.display = 'none';
+        successBox.style.display = 'block';
+      } else {
+        throw new Error('Server error');
+      }
+    } catch {
+      errorBanner.style.display = 'block';
+      btn.disabled = false;
+      btn.textContent = 'Submit & Connect With Us';
+    }
+  });
+</script>
+
+</body>
+</html>
