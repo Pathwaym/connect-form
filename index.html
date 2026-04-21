@@ -317,15 +317,35 @@
         <input type="tel" name="phone" placeholder="+27 " />
       </div>
 
+      <hr class="section-divider" />
+
+      <!-- Are you new? -->
       <div class="field">
-        <label class="top-label">Area / Suburb</label>
-        <input type="text" name="suburb" placeholder="e.g. Sandton, Fourways..." />
+        <label class="top-label">Are you new to Pathway? <span>*</span></label>
+        <select name="visitStatus" required>
+          <option value="" disabled selected>Select an option</option>
+          <option>First time</option>
+          <option>Been a few times</option>
+          <option>Regularly attending</option>
+          <option>I'm a member</option>
+        </select>
+      </div>
+
+      <!-- Best way to reach -->
+      <div class="field">
+        <label class="top-label">Best way to reach you</label>
+        <select name="contactMethod">
+          <option value="" disabled selected>Select an option</option>
+          <option>WhatsApp</option>
+          <option>Phone call</option>
+          <option>Email</option>
+        </select>
       </div>
 
       <hr class="section-divider" />
 
       <!-- Reason for connecting -->
-      <div class="field-label">I would like to <span>*</span></div>
+      <div class="field-label">I would like to</div>
       <div class="checkbox-group" id="reasonGroup">
         <label class="checkbox-item">
           <input type="checkbox" name="reason" value="Learn more about the church" />
@@ -354,20 +374,6 @@
       </div>
 
       <hr class="section-divider" />
-
-      <!-- How they heard -->
-      <div class="field">
-        <label class="top-label">What brought you to Pathway?</label>
-        <select name="referral">
-          <option value="" disabled selected>Select an option</option>
-          <option>Friend or Family</option>
-          <option>Social Media</option>
-          <option>Walked in / Drove past</option>
-          <option>An Event</option>
-          <option>Online Search</option>
-          <option>Other</option>
-        </select>
-      </div>
 
       <div class="field">
         <label class="top-label">Prayer Request or Message</label>
@@ -420,8 +426,8 @@
       lastName: fd.get('lastName'),
       email: fd.get('email'),
       phone: fd.get('phone'),
-      suburb: fd.get('suburb'),
-      referral: fd.get('referral'),
+      visitStatus: fd.get('visitStatus'),
+      contactMethod: fd.get('contactMethod'),
       message: fd.get('message'),
       reasons: reasons,
     };
