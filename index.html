@@ -344,7 +344,7 @@
     const data = Object.fromEntries(new FormData(form));
 
     try {
-      const res = await fetch('https://pathway-ministries-api.vercel.app/api/submit', {
+      const res = await fetch('https://api-amber-ten-77.vercel.app/api/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
