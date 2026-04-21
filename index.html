@@ -3,15 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Get More Information | Pathway Ministries</title>
+  <title>Connect With Us | Pathway Ministries</title>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     :root {
       --gold: #C9A84C;
-      --gold-light: #E8C96A;
       --cream: #FAF7F2;
       --dark: #1A1A1A;
-      --mid: #3D3533;
       --muted: #8A7F74;
       --border: rgba(201,168,76,0.25);
     }
@@ -42,17 +40,9 @@
       z-index: 0;
     }
 
-    .container {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 560px;
-    }
+    .container { position: relative; z-index: 1; width: 100%; max-width: 580px; }
 
-    .header {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+    .header { text-align: center; margin-bottom: 40px; }
 
     .cross-mark {
       display: inline-flex;
@@ -62,10 +52,7 @@
       opacity: 0.85;
     }
 
-    .cross-mark svg {
-      width: 36px;
-      height: 36px;
-    }
+    .cross-mark svg { width: 36px; height: 36px; }
 
     .header h1 {
       font-family: 'Cormorant Garamond', serif;
@@ -77,9 +64,7 @@
       margin-bottom: 8px;
     }
 
-    .header h1 span {
-      color: var(--gold);
-    }
+    .header h1 span { color: var(--gold); }
 
     .header p {
       font-size: 0.88rem;
@@ -103,11 +88,9 @@
       box-shadow: 0 8px 40px rgba(0,0,0,0.06), 0 1px 0 rgba(201,168,76,0.15);
     }
 
-    .field {
-      margin-bottom: 22px;
-    }
+    .field { margin-bottom: 22px; }
 
-    label {
+    .field-label, label.top-label {
       display: block;
       font-size: 0.72rem;
       letter-spacing: 0.12em;
@@ -117,12 +100,13 @@
       font-weight: 500;
     }
 
-    label span {
-      color: var(--gold);
-      margin-left: 2px;
-    }
+    .field-label span, label.top-label span { color: var(--gold); margin-left: 2px; }
 
-    input, select, textarea {
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    select,
+    textarea {
       width: 100%;
       padding: 11px 14px;
       border: 1px solid #E0D9CF;
@@ -137,7 +121,11 @@
       appearance: none;
     }
 
-    input:focus, select:focus, textarea:focus {
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus,
+    select:focus,
+    textarea:focus {
       border-color: var(--gold);
       box-shadow: 0 0 0 3px rgba(201,168,76,0.1);
       background: #fff;
@@ -151,15 +139,56 @@
       cursor: pointer;
     }
 
-    textarea {
-      resize: vertical;
-      min-height: 90px;
+    textarea { resize: vertical; min-height: 90px; }
+
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+    .section-divider {
+      border: none;
+      border-top: 1px solid #EDE7DC;
+      margin: 4px 0 24px;
     }
 
-    .row {
+    /* Checkbox grid */
+    .checkbox-group {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 16px;
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .checkbox-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 12px 13px;
+      border: 1px solid #E0D9CF;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s;
+      background: var(--cream);
+    }
+
+    .checkbox-item:hover { border-color: var(--gold); background: #fff; }
+    .checkbox-item.checked { border-color: var(--gold); background: #fffdf7; }
+
+    .checkbox-item input[type="checkbox"] {
+      width: 15px;
+      height: 15px;
+      min-width: 15px;
+      padding: 0;
+      margin-top: 2px;
+      accent-color: var(--gold);
+      cursor: pointer;
+    }
+
+    .checkbox-label {
+      font-size: 0.83rem;
+      line-height: 1.4;
+      color: var(--dark);
+      font-weight: 400;
+      cursor: pointer;
+      user-select: none;
     }
 
     .submit-btn {
@@ -188,15 +217,10 @@
       margin-top: 20px;
       font-size: 0.78rem;
       color: var(--muted);
-      letter-spacing: 0.03em;
     }
 
-    .footer-note a {
-      color: var(--gold);
-      text-decoration: none;
-    }
+    .footer-note a { color: var(--gold); text-decoration: none; }
 
-    /* Success state */
     .success-box {
       display: none;
       text-align: center;
@@ -222,13 +246,8 @@
       margin-bottom: 8px;
     }
 
-    .success-box p {
-      font-size: 0.88rem;
-      color: var(--muted);
-      line-height: 1.6;
-    }
+    .success-box p { font-size: 0.88rem; color: var(--muted); line-height: 1.6; }
 
-    /* Error banner */
     .error-banner {
       display: none;
       background: #FFF0F0;
@@ -240,9 +259,10 @@
       margin-bottom: 18px;
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 520px) {
       .card { padding: 28px 20px 24px; }
       .row { grid-template-columns: 1fr; gap: 0; }
+      .checkbox-group { grid-template-columns: 1fr; }
       .header h1 { font-size: 2rem; }
     }
   </style>
@@ -259,41 +279,77 @@
     </div>
     <h1>Pathway <span>Ministries</span></h1>
     <div class="divider"></div>
-    <p>Get More Information</p>
+    <p>Connect With Us</p>
   </div>
 
   <div class="card">
     <div class="error-banner" id="errorBanner">Something went wrong. Please try again or contact us directly.</div>
 
     <form id="infoForm">
+
+      <!-- Personal Details -->
       <div class="row">
         <div class="field">
-          <label>First Name <span>*</span></label>
+          <label class="top-label">First Name <span>*</span></label>
           <input type="text" name="firstName" required placeholder="Your first name" />
         </div>
         <div class="field">
-          <label>Last Name <span>*</span></label>
+          <label class="top-label">Last Name <span>*</span></label>
           <input type="text" name="lastName" required placeholder="Your last name" />
         </div>
       </div>
 
       <div class="field">
-        <label>Email Address <span>*</span></label>
+        <label class="top-label">Email Address <span>*</span></label>
         <input type="email" name="email" required placeholder="you@example.com" />
       </div>
 
       <div class="field">
-        <label>Phone Number</label>
+        <label class="top-label">Phone Number</label>
         <input type="tel" name="phone" placeholder="+27 " />
       </div>
 
       <div class="field">
-        <label>Area / Suburb</label>
+        <label class="top-label">Area / Suburb</label>
         <input type="text" name="suburb" placeholder="e.g. Sandton, Fourways..." />
       </div>
 
+      <hr class="section-divider" />
+
+      <!-- Reason for connecting -->
+      <div class="field-label">I would like to <span>*</span></div>
+      <div class="checkbox-group" id="reasonGroup">
+        <label class="checkbox-item">
+          <input type="checkbox" name="reason" value="Learn more about the church" />
+          <span class="checkbox-label">Learn more about the church</span>
+        </label>
+        <label class="checkbox-item">
+          <input type="checkbox" name="reason" value="Find out about ministries" />
+          <span class="checkbox-label">Find out about ministries</span>
+        </label>
+        <label class="checkbox-item">
+          <input type="checkbox" name="reason" value="Get connected to a Life Group" />
+          <span class="checkbox-label">Get connected to a Life Group</span>
+        </label>
+        <label class="checkbox-item">
+          <input type="checkbox" name="reason" value="Speak to a pastor" />
+          <span class="checkbox-label">Speak to a pastor</span>
+        </label>
+        <label class="checkbox-item">
+          <input type="checkbox" name="reason" value="Get involved as a volunteer" />
+          <span class="checkbox-label">Get involved as a volunteer</span>
+        </label>
+        <label class="checkbox-item">
+          <input type="checkbox" name="reason" value="Other / General enquiry" />
+          <span class="checkbox-label">Other / General enquiry</span>
+        </label>
+      </div>
+
+      <hr class="section-divider" />
+
+      <!-- How they heard -->
       <div class="field">
-        <label>What brought you to Pathway?</label>
+        <label class="top-label">What brought you to Pathway?</label>
         <select name="referral">
           <option value="" disabled selected>Select an option</option>
           <option>Friend or Family</option>
@@ -306,11 +362,11 @@
       </div>
 
       <div class="field">
-        <label>Prayer Request or Message</label>
+        <label class="top-label">Prayer Request or Message</label>
         <textarea name="message" placeholder="Share anything you'd like us to pray for or know about you..."></textarea>
       </div>
 
-      <button type="submit" class="submit-btn" id="submitBtn">Submit &amp; Connect With Us</button>
+      <button type="submit" class="submit-btn" id="submitBtn">Connect With Us</button>
     </form>
 
     <div class="success-box" id="successBox">
@@ -330,6 +386,13 @@
 </div>
 
 <script>
+  // Highlight checked items
+  document.querySelectorAll('.checkbox-item input[type="checkbox"]').forEach(cb => {
+    cb.addEventListener('change', () => {
+      cb.closest('.checkbox-item').classList.toggle('checked', cb.checked);
+    });
+  });
+
   const form = document.getElementById('infoForm');
   const btn = document.getElementById('submitBtn');
   const successBox = document.getElementById('successBox');
@@ -341,7 +404,19 @@
     btn.textContent = 'Sending...';
     errorBanner.style.display = 'none';
 
-    const data = Object.fromEntries(new FormData(form));
+    const fd = new FormData(form);
+    const reasons = Array.from(form.querySelectorAll('input[name="reason"]:checked')).map(el => el.value);
+
+    const data = {
+      firstName: fd.get('firstName'),
+      lastName: fd.get('lastName'),
+      email: fd.get('email'),
+      phone: fd.get('phone'),
+      suburb: fd.get('suburb'),
+      referral: fd.get('referral'),
+      message: fd.get('message'),
+      reasons: reasons,
+    };
 
     try {
       const res = await fetch('https://api-amber-ten-77.vercel.app/api/submit', {
@@ -359,7 +434,7 @@
     } catch {
       errorBanner.style.display = 'block';
       btn.disabled = false;
-      btn.textContent = 'Submit & Connect With Us';
+      btn.textContent = 'Connect With Us';
     }
   });
 </script>
