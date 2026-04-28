@@ -7,7 +7,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     body {
       background: #F5F0EB;
       font-family: 'Inter', sans-serif;
@@ -17,340 +16,185 @@
       align-items: center;
       padding: 0 0 60px;
     }
-
-    /* Nav */
+    /* Topbar */
     .topbar {
       width: 100%;
       background: #fff;
-      padding: 16px 32px;
+      padding: 14px 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       border-bottom: 1px solid #EDE8E3;
       margin-bottom: 48px;
     }
-
-
+    .site-logo { display: flex; align-items: center; gap: 8px; text-decoration: none; }
+    .site-logo-text { display: flex; flex-direction: column; }
+    .site-logo-name { font-size: 1.15rem; font-weight: 800; letter-spacing: -0.02em; line-height: 1.1; }
+    .site-logo-name .dark { color: #1A1A1A; }
+    .site-logo-name .orange { color: #E8622A; }
+    .site-logo-tagline { font-size: 0.6rem; font-weight: 500; color: #B5ADA6; letter-spacing: 0.06em; margin-top: 1px; }
     .back-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: #E8622A;
-      color: #fff;
-      text-decoration: none;
-      padding: 9px 20px;
-      border-radius: 50px;
-      font-size: 0.82rem;
-      font-weight: 500;
-      letter-spacing: 0.01em;
-      transition: background 0.2s, transform 0.1s;
+      display: inline-flex; align-items: center; gap: 7px;
+      background: #E8622A; color: #fff; text-decoration: none;
+      padding: 9px 18px; border-radius: 50px;
+      font-size: 0.82rem; font-weight: 500;
+      transition: background 0.2s;
     }
-
     .back-btn:hover { background: #D0541E; }
-    .back-btn:active { transform: scale(0.98); }
-
     .back-btn svg { width: 14px; height: 14px; }
-
     /* Card */
     .card {
-      background: #fff;
-      border-radius: 20px;
-      padding: 48px 48px 44px;
-      width: 100%;
-      max-width: 620px;
+      background: #fff; border-radius: 20px;
+      padding: 48px 48px 44px; width: 100%; max-width: 640px;
       box-shadow: 0 4px 24px rgba(0,0,0,0.07);
     }
-
-    .card-title {
-      font-size: 1.7rem;
-      font-weight: 600;
-      color: #1A1A1A;
-      margin-bottom: 6px;
-    }
-
-    .card-sub {
-      font-size: 0.88rem;
-      color: #9A8F85;
-      margin-bottom: 32px;
-      line-height: 1.5;
-    }
-
-    .row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-
+    .card-title { font-size: 1.7rem; font-weight: 600; color: #1A1A1A; margin-bottom: 6px; }
+    .card-sub { font-size: 0.88rem; color: #9A8F85; margin-bottom: 32px; line-height: 1.5; }
+    .row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .field { margin-bottom: 20px; }
-
-    .field label {
-      display: block;
-      font-size: 0.82rem;
-      font-weight: 500;
-      color: #3D3530;
-      margin-bottom: 7px;
+    .field > label {
+      display: block; font-size: 0.82rem; font-weight: 500;
+      color: #3D3530; margin-bottom: 7px;
     }
-
-    .field label span { color: #E8622A; margin-left: 2px; }
-
-    .field input,
-    .field select,
-    .field textarea {
-      width: 100%;
-      padding: 12px 16px;
-      border: none;
-      border-radius: 10px;
-      background: #F5F0EB;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.9rem;
-      color: #1A1A1A;
-      outline: none;
-      transition: box-shadow 0.2s, background 0.2s;
-      appearance: none;
+    .field > label span { color: #E8622A; margin-left: 2px; }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: 12px 16px; border: none; border-radius: 10px;
+      background: #F5F0EB; font-family: 'Inter', sans-serif;
+      font-size: 0.9rem; color: #1A1A1A; outline: none;
+      transition: box-shadow 0.2s, background 0.2s; appearance: none;
     }
-
-    .field input::placeholder,
-    .field textarea::placeholder { color: #B5ADA6; }
-
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus {
-      background: #EDE8E3;
-      box-shadow: 0 0 0 2px rgba(232,98,42,0.25);
+    .field input::placeholder, .field textarea::placeholder { color: #B5ADA6; }
+    .field input:focus, .field select:focus, .field textarea:focus {
+      background: #EDE8E3; box-shadow: 0 0 0 2px rgba(232,98,42,0.25);
     }
-
     .field select {
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%239A8F85' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-      background-repeat: no-repeat;
-      background-position: right 14px center;
-      background-color: #F5F0EB;
-      padding-right: 38px;
-      cursor: pointer;
-      color: #1A1A1A;
+      background-repeat: no-repeat; background-position: right 14px center;
+      background-color: #F5F0EB; padding-right: 38px; cursor: pointer;
     }
-
-    .field select option[value=""] { color: #B5ADA6; }
-
-    .field textarea {
-      resize: vertical;
-      min-height: 110px;
+    .field textarea { resize: vertical; min-height: 110px; }
+    .divider { border: none; border-top: 1px solid #EDE8E3; margin: 8px 0 24px; }
+    /* Categorised dropdown */
+    .cat-dropdown { position: relative; }
+    .cat-tabs { display: flex; gap: 6px; margin-bottom: 10px; flex-wrap: wrap; }
+    .cat-tab {
+      padding: 5px 14px; border-radius: 20px; font-size: 0.75rem; font-weight: 500;
+      border: 1.5px solid #EDE8E3; background: #fff; color: #9A8F85;
+      cursor: pointer; transition: all 0.15s; font-family: 'Inter', sans-serif;
     }
-
-    /* Section label */
-    .section-label {
-      font-size: 0.78rem;
-      font-weight: 600;
-      color: #9A8F85;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin: 8px 0 12px;
+    .cat-tab.active { background: #FDF0EA; border-color: #E8622A; color: #E8622A; }
+    .cat-trigger {
+      width: 100%; padding: 12px 16px; border-radius: 10px; background: #F5F0EB;
+      font-family: 'Inter', sans-serif; font-size: 0.9rem; color: #B5ADA6;
+      border: none; outline: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between;
+      transition: background 0.15s, box-shadow 0.2s; text-align: left;
     }
-
-    /* Checkbox grid */
-    .checkbox-group {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-bottom: 20px;
+    .cat-trigger.has-value { color: #1A1A1A; }
+    .cat-trigger.open, .cat-trigger:focus { background: #EDE8E3; box-shadow: 0 0 0 2px rgba(232,98,42,0.25); }
+    .cat-trigger svg { width: 14px; height: 14px; flex-shrink: 0; transition: transform 0.2s; color: #9A8F85; }
+    .cat-trigger.open svg { transform: rotate(180deg); }
+    .cat-menu {
+      display: none; position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+      background: #fff; border-radius: 12px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12); z-index: 200;
+      border: 1px solid #EDE8E3; max-height: 280px; overflow-y: auto;
     }
-
-    .checkbox-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 11px 14px;
-      border-radius: 10px;
-      background: #F5F0EB;
-      cursor: pointer;
-      transition: background 0.15s;
+    .cat-menu.open { display: block; }
+    .cat-group { display: none; }
+    .cat-group.active { display: block; }
+    .cat-group-label {
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+      text-transform: uppercase; color: #E8622A; padding: 12px 16px 4px;
     }
-
-    .checkbox-item:hover { background: #EDE8E3; }
-    .checkbox-item.checked { background: #FDF0EA; box-shadow: 0 0 0 1.5px rgba(232,98,42,0.4); }
-
-    .checkbox-item input[type="checkbox"] {
-      width: 16px;
-      height: 16px;
-      min-width: 16px;
-      accent-color: #E8622A;
-      cursor: pointer;
-      padding: 0;
-      background: transparent;
-      box-shadow: none;
-      border-radius: 4px;
+    .cat-option {
+      padding: 10px 16px; font-size: 0.88rem; color: #3D3530;
+      cursor: pointer; transition: background 0.12s;
     }
-
-    .checkbox-item input:focus { box-shadow: none; }
-
-    .checkbox-label {
-      font-size: 0.83rem;
-      color: #3D3530;
-      font-weight: 400;
-      cursor: pointer;
-      user-select: none;
-      line-height: 1.3;
-    }
-
-    /* Divider */
-    .divider {
-      border: none;
-      border-top: 1px solid #EDE8E3;
-      margin: 8px 0 24px;
-    }
-
+    .cat-option:hover { background: #F5F0EB; }
+    .cat-option.selected { background: #FDF0EA; color: #E8622A; font-weight: 500; }
+    .cat-option:last-child { border-radius: 0 0 12px 12px; }
     /* Submit */
     .submit-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #E8622A;
-      color: #fff;
-      border: none;
-      border-radius: 50px;
-      padding: 13px 28px;
-      font-family: 'Inter', sans-serif;
-      font-size: 0.88rem;
-      font-weight: 500;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.1s;
-      margin-top: 8px;
+      display: inline-flex; align-items: center; gap: 8px;
+      background: #E8622A; color: #fff; border: none; border-radius: 50px;
+      padding: 13px 28px; font-family: 'Inter', sans-serif;
+      font-size: 0.88rem; font-weight: 500; cursor: pointer;
+      transition: background 0.2s, transform 0.1s; margin-top: 8px;
     }
-
     .submit-btn:hover { background: #D0541E; }
     .submit-btn:active { transform: scale(0.98); }
     .submit-btn:disabled { background: #E8A98A; cursor: not-allowed; }
     .submit-btn svg { width: 16px; height: 16px; }
-
     /* Error */
     .error-banner {
-      display: none;
-      background: #FFF0F0;
-      border-radius: 8px;
-      padding: 10px 14px;
-      font-size: 0.82rem;
-      color: #C0392B;
-      margin-bottom: 18px;
+      display: none; background: #FFF0F0; border-radius: 8px;
+      padding: 10px 14px; font-size: 0.82rem; color: #C0392B; margin-bottom: 18px;
     }
-
     /* Success */
-    .success-box {
-      display: none;
-      text-align: center;
-      padding: 16px 0 8px;
-    }
-
+    .success-box { display: none; text-align: center; padding: 16px 0 8px; }
     .success-icon {
-      width: 64px;
-      height: 64px;
-      background: #FDF0EA;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
+      width: 64px; height: 64px; background: #FDF0EA; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;
     }
-
     .success-icon svg { width: 28px; height: 28px; }
-
-    .success-box h2 {
-      font-size: 1.5rem;
-      font-weight: 600;
-      color: #1A1A1A;
-      margin-bottom: 10px;
-    }
-
-    .success-box p {
-      font-size: 0.9rem;
-      color: #9A8F85;
-      line-height: 1.7;
-      margin-bottom: 28px;
-    }
-
+    .success-box h2 { font-size: 1.5rem; font-weight: 600; color: #1A1A1A; margin-bottom: 10px; }
+    .success-box p { font-size: 0.9rem; color: #9A8F85; line-height: 1.7; margin-bottom: 28px; }
     .home-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      background: #E8622A;
-      color: #fff;
-      text-decoration: none;
-      padding: 12px 24px;
-      border-radius: 50px;
-      font-size: 0.88rem;
-      font-weight: 500;
-      transition: background 0.2s;
+      display: inline-flex; align-items: center; gap: 7px;
+      background: #E8622A; color: #fff; text-decoration: none;
+      padding: 12px 24px; border-radius: 50px;
+      font-size: 0.88rem; font-weight: 500; transition: background 0.2s;
     }
-
     .home-btn:hover { background: #D0541E; }
-
-    /* Footer */
-    .footer {
-      margin-top: 24px;
-      font-size: 0.78rem;
-      color: #B5ADA6;
-      text-align: center;
-    }
-
+    .footer { margin-top: 24px; font-size: 0.78rem; color: #B5ADA6; text-align: center; }
     .footer a { color: #E8622A; text-decoration: none; }
-
+    @keyframes spin { to { transform: rotate(360deg); } }
     @media (max-width: 560px) {
       .card { padding: 32px 20px 28px; border-radius: 16px; }
       .row { grid-template-columns: 1fr; gap: 0; }
-      .checkbox-group { grid-template-columns: 1fr; }
       .topbar { padding: 14px 20px; }
     }
   </style>
 </head>
 <body>
 
-<!-- Top bar -->
 <div class="topbar">
-  <a href="https://pathwaym.co.za" style="display:flex;align-items:center;gap:8px;text-decoration:none;">
-    <div style="display:flex;flex-direction:column;">
-      <span style="font-size:1.2rem;font-weight:800;letter-spacing:-0.02em;line-height:1.1;">
-        <span style="color:#1A1A1A;">Pathway</span> <span style="color:#E8622A;">Ministries</span>
-      </span>
-      <span style="font-size:0.62rem;font-weight:500;color:#B5ADA6;letter-spacing:0.06em;">One Love · One Choice · One Christ</span>
+  <a href="https://pathwaym.co.za" class="site-logo">
+    <div class="site-logo-text">
+      <div class="site-logo-name"><span class="dark">Pathway</span> <span class="orange">Ministries</span></div>
+      <div class="site-logo-tagline">One Love &middot; One Choice &middot; One Christ</div>
     </div>
   </a>
   <a href="https://pathwaym.co.za" class="back-btn">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M19 12H5M12 5l-7 7 7 7"/>
-    </svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
     Back to Site
   </a>
 </div>
 
-<!-- Form Card -->
 <div class="card">
   <div class="error-banner" id="errorBanner">Something went wrong. Please try again or email us at info@pathwaym.co.za</div>
 
   <form id="connectForm">
-    <h1 class="card-title">Connect With Us</h1>
-    <p class="card-sub">Fill out the form below and we'll get back to you personally — never with spam, always with genuine care.</p>
+    <h1 class="card-title">Send us a message</h1>
+    <p class="card-sub">Fill out the form below and someone from the Pathway team will be in touch.</p>
 
     <div class="row">
       <div class="field">
-        <label>First Name <span>*</span></label>
-        <input type="text" name="firstName" required placeholder="Your first name" />
+        <label>Full Name <span>*</span></label>
+        <input type="text" name="firstName" required placeholder="Your full name" />
       </div>
-      <div class="field">
-        <label>Last Name <span>*</span></label>
-        <input type="text" name="lastName" required placeholder="Your last name" />
-      </div>
-    </div>
-
-    <div class="row">
       <div class="field">
         <label>Email Address <span>*</span></label>
         <input type="email" name="email" required placeholder="you@example.com" />
       </div>
-      <div class="field">
-        <label>Phone Number</label>
-        <input type="tel" name="phone" placeholder="+27" />
-      </div>
     </div>
 
     <div class="row">
+      <div class="field">
+        <label>Phone Number <span style="color:#9A8F85;font-weight:400;">(Optional)</span></label>
+        <input type="tel" name="phone" placeholder="+27 ..." />
+      </div>
       <div class="field">
         <label>Are you new to Pathway? <span>*</span></label>
         <select name="visitStatus" required>
@@ -361,48 +205,60 @@
           <option>I'm a member</option>
         </select>
       </div>
-      <div class="field">
-        <label>Best way to reach you</label>
-        <select name="contactMethod">
-          <option value="" disabled selected>Select an option</option>
-          <option>WhatsApp</option>
-          <option>Phone call</option>
-          <option>Email</option>
-        </select>
+    </div>
+
+    <div class="field" style="max-width:50%;padding-right:8px;">
+      <label>Best way to reach you</label>
+      <select name="contactMethod">
+        <option value="" disabled selected>Select an option</option>
+        <option>WhatsApp</option>
+        <option>Phone call</option>
+        <option>Email</option>
+      </select>
+    </div>
+
+    <hr class="divider" />
+
+    <div class="field">
+      <label>I would like to <span>*</span></label>
+      <p style="font-size:0.78rem;color:#9A8F85;margin-bottom:10px;margin-top:-2px;">Choose the option that best matches why you are reaching out.</p>
+      <div class="cat-dropdown">
+        <input type="hidden" name="reason" id="reasonInput" />
+        <div class="cat-tabs">
+          <button type="button" class="cat-tab active" data-group="nextsteps">Next Steps</button>
+          <button type="button" class="cat-tab" data-group="ministries">Ministries</button>
+          <button type="button" class="cat-tab" data-group="support">Support</button>
+        </div>
+        <button type="button" class="cat-trigger" id="catTrigger">
+          <span id="catLabel">Choose a next step, ministry, or support need</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="cat-menu" id="catMenu">
+          <div class="cat-group active" id="group-nextsteps">
+            <div class="cat-group-label">Next Steps</div>
+            <div class="cat-option" data-value="Salvation">Salvation</div>
+            <div class="cat-option" data-value="Baptism">Baptism</div>
+            <div class="cat-option" data-value="Volunteering">Volunteering</div>
+          </div>
+          <div class="cat-group" id="group-ministries">
+            <div class="cat-group-label">Ministries</div>
+            <div class="cat-option" data-value="Children's Ministry">Children's Ministry</div>
+            <div class="cat-option" data-value="Youth Ministry">Youth Ministry</div>
+            <div class="cat-option" data-value="Men's Ministry">Men's Ministry</div>
+            <div class="cat-option" data-value="Women's Ministry">Women's Ministry</div>
+            <div class="cat-option" data-value="Prayer Ministry">Prayer Ministry</div>
+            <div class="cat-option" data-value="Serving &amp; Building">Serving &amp; Building</div>
+          </div>
+          <div class="cat-group" id="group-support">
+            <div class="cat-group-label">Support</div>
+            <div class="cat-option" data-value="Can we pray for you?">Can we pray for you?</div>
+            <div class="cat-option" data-value="Speak to a pastor">Speak to a pastor</div>
+            <div class="cat-option" data-value="Learn more about the church">Learn more about the church</div>
+            <div class="cat-option" data-value="Other / General enquiry">Other / General enquiry</div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <hr class="divider" />
-    <div class="section-label">I would like to</div>
-
-    <div class="checkbox-group">
-      <label class="checkbox-item">
-        <input type="checkbox" name="reason" value="Learn more about the church" />
-        <span class="checkbox-label">Learn more about the church</span>
-      </label>
-      <label class="checkbox-item">
-        <input type="checkbox" name="reason" value="Find out about ministries" />
-        <span class="checkbox-label">Find out about ministries</span>
-      </label>
-      <label class="checkbox-item">
-        <input type="checkbox" name="reason" value="Get connected to a Life Group" />
-        <span class="checkbox-label">Get connected to a Life Group</span>
-      </label>
-      <label class="checkbox-item">
-        <input type="checkbox" name="reason" value="Speak to a pastor" />
-        <span class="checkbox-label">Speak to a pastor</span>
-      </label>
-      <label class="checkbox-item">
-        <input type="checkbox" name="reason" value="Get involved as a volunteer" />
-        <span class="checkbox-label">Get involved as a volunteer</span>
-      </label>
-      <label class="checkbox-item">
-        <input type="checkbox" name="reason" value="Other / General enquiry" />
-        <span class="checkbox-label">Other / General enquiry</span>
-      </label>
-    </div>
-
-    <hr class="divider" />
 
     <div class="field">
       <label>Prayer Request or Message</label>
@@ -410,66 +266,92 @@
     </div>
 
     <button type="submit" class="submit-btn" id="submitBtn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <line x1="22" y1="2" x2="11" y2="13"></line>
-        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
       Send Message
     </button>
   </form>
 
-  <!-- Success State -->
   <div class="success-box" id="successBox">
     <div class="success-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="#E8622A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M20 6L9 17l-5-5"/>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="#E8622A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
     </div>
     <h2>Message Sent!</h2>
-    <p>Thank you for reaching out. Someone from the Pathway Ministries team will be in touch with you personally soon.<br><br>God bless you. 🙏</p>
+    <p>Thank you for reaching out. Someone from the Pathway Ministries team will be in touch with you personally soon.<br><br>God bless you. &#x1F64F;</p>
     <a href="https://pathwaym.co.za" class="home-btn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;">
-        <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
-      </svg>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:15px;height:15px;"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
       Back to Pathway Ministries
     </a>
   </div>
 </div>
 
 <div class="footer">
-  Pathway Ministries · Hyde Park, Johannesburg · <a href="https://pathwaym.co.za">pathwaym.co.za</a>
+  Pathway Ministries &middot; Hyde Park, Johannesburg &middot; <a href="https://pathwaym.co.za">pathwaym.co.za</a>
 </div>
 
 <script>
-  document.querySelectorAll('.checkbox-item input[type="checkbox"]').forEach(cb => {
-    cb.addEventListener('change', () => {
-      cb.closest('.checkbox-item').classList.toggle('checked', cb.checked);
+  // Categorised dropdown
+  const catTrigger = document.getElementById('catTrigger');
+  const catMenu = document.getElementById('catMenu');
+  const catLabel = document.getElementById('catLabel');
+  const reasonInput = document.getElementById('reasonInput');
+
+  document.querySelectorAll('.cat-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.cat-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.cat-group').forEach(g => g.classList.remove('active'));
+      tab.classList.add('active');
+      document.getElementById('group-' + tab.dataset.group).classList.add('active');
+      catMenu.classList.add('open');
+      catTrigger.classList.add('open');
     });
   });
 
+  catTrigger.addEventListener('click', () => {
+    catMenu.classList.toggle('open');
+    catTrigger.classList.toggle('open');
+  });
+
+  document.querySelectorAll('.cat-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      document.querySelectorAll('.cat-option').forEach(o => o.classList.remove('selected'));
+      opt.classList.add('selected');
+      reasonInput.value = opt.dataset.value;
+      catLabel.textContent = opt.dataset.value;
+      catTrigger.classList.add('has-value');
+      catMenu.classList.remove('open');
+      catTrigger.classList.remove('open');
+    });
+  });
+
+  document.addEventListener('click', e => {
+    if (!catTrigger.contains(e.target) && !catMenu.contains(e.target) && !e.target.classList.contains('cat-tab')) {
+      catMenu.classList.remove('open');
+      catTrigger.classList.remove('open');
+    }
+  });
+
+  // Form submit
   const form = document.getElementById('connectForm');
   const btn = document.getElementById('submitBtn');
   const successBox = document.getElementById('successBox');
   const errorBanner = document.getElementById('errorBanner');
 
-  form.addEventListener('submit', async (e) => {
+  form.addEventListener('submit', async e => {
     e.preventDefault();
     btn.disabled = true;
     btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:16px;height:16px;animation:spin 1s linear infinite"><path d="M21 12a9 9 0 11-6.219-8.56"/></svg> Sending...';
     errorBanner.style.display = 'none';
 
     const fd = new FormData(form);
-    const reasons = Array.from(form.querySelectorAll('input[name="reason"]:checked')).map(el => el.value);
-
     const data = {
       firstName: fd.get('firstName'),
-      lastName: fd.get('lastName'),
+      lastName: fd.get('firstName'),
       email: fd.get('email'),
       phone: fd.get('phone'),
       visitStatus: fd.get('visitStatus'),
       contactMethod: fd.get('contactMethod'),
       message: fd.get('message'),
-      reasons,
+      reasons: fd.get('reason') ? [fd.get('reason')] : [],
     };
 
     try {
@@ -478,13 +360,10 @@
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
       });
-
       if (res.ok) {
         form.style.display = 'none';
         successBox.style.display = 'block';
-      } else {
-        throw new Error('Server error');
-      }
+      } else { throw new Error(); }
     } catch {
       errorBanner.style.display = 'block';
       btn.disabled = false;
@@ -492,10 +371,5 @@
     }
   });
 </script>
-
-<style>
-  @keyframes spin { to { transform: rotate(360deg); } }
-</style>
-
 </body>
 </html>
